@@ -14,7 +14,7 @@ if "%2"=="" set useset=1&goto init
 if "%2" NEQ "" goto continuestyle
 goto :printhelpmenu
 :continuestyle
-echo %2|findstr /ber "[/][ulsenx][ulsenx]*[ulsenx]*[ulsenx]*[ulsenx]*[ulsenx]*" >NUL&&echo: >NUL || goto :printhelpmenu
+echo %2|findstr /ber "[/][uUlLsSeEnNxX][uUlLsSeEnNxX]*[uUlLsSeEnNxX]*[uUlLsSeEnNxX]*[uUlLsSeEnNxX]*[uUlLsSeEnNxX]*" >NUL&&echo: >NUL || goto :printhelpmenu
 set style=%~2
 set style=%style:~1%
 set skip=0
@@ -61,7 +61,7 @@ for /f "tokens=*" %%i in ('echo !set%whatset%!') do (
 set some=%%i
 set some="!some:~%rand_lenth%,1!"
 set endprocess=!some!!endprocess!
-rem debug information: echo using set%whatset% @ !rand_lenth! pass %loopcounter% endprocess is !endprocess!
+rem debug info: echo using set%whatset% @ !rand_lenth! pass %loopcounter% endprocess is !endprocess!
 )
 if %loopcounter% LSS %number% goto randomgen
 setlocal disabledelayedexpansion

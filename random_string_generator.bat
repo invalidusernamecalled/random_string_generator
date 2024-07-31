@@ -61,13 +61,11 @@ for /f "tokens=*" %%i in ('echo !set%whatset%!') do (
 set some=%%i
 set some="!some:~%rand_lenth%,1!"
 set endprocess=!some!!endprocess!
-REM DEBUG INFORMATION: echo using set%whatset% @ !rand_lenth! pass %loopcounter% endprocess is !endprocess!
+rem debug information: echo using set%whatset% @ !rand_lenth! pass %loopcounter% endprocess is !endprocess!
 )
 if %loopcounter% LSS %number% goto randomgen
-set endprocess=%endprocess:^!=FUNNY%
-set endprocess="!endprocess:"=!"
 setlocal disabledelayedexpansion
-set endprocess=%endprocess:FUNNY=!%
+set endprocess="%endprocess:"=%"
 for /f "tokens=*" %%i in (%endprocess%) do echo %%i
 goto :eof
 :printhelpmenu
@@ -80,7 +78,7 @@ echo:/l lower case alpha.
 echo:/u upper case alpha.
 echo:/n numbers
 echo:/s symbol basic symbol set
-echo:/e symbol extended symbol set
+echo:/x symbol extended symbol set
 echo:/h author info
 echo:
 echo:All options must be combined like this /lu

@@ -3,14 +3,14 @@
 :process
 set result=
 set set1="abcdefghijklmnoprstuvwxyz"
-set set2="0123456789"
+set set2="01234567890123456789"
 set set3=">/<~@#$*(){}[]\|:;?.,"
 set set4="@#$%&*(){}[]"
 set set5="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 set set6="ABCDEFGabcdefg0123456789HIJKLMNOPhijklmnopQR0123456789STUVWXYZqrstuvwxyz"
 set set7=">/<~^^^!@#$%%^^^&*(){}[]\|:;?.,ABCDEFGabcdefg0123456789HIJKLMNOPhijklmnopQR0123456789STUVWXYZqrstuvwxyz"
 set numset1=25
-set numset2=10
+set numset2=20
 set numset3=21
 set numset4=11
 set numset5=25

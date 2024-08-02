@@ -1,1 +1,1 @@
-`random_string_generator.bat /4`
+`random.bat /4`

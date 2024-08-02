@@ -90,13 +90,13 @@ set dopadding=0
 set dontpad=1
 set dontrepeat=1
 set padset=0
-if %numrealset% LSS 26 if %number% GTR %numrealset% set dontpad=0&set /a padset=number-numrealset&set dontrepeat=-1&goto setlesspad
+if %numrealset% LSS 26 if %number% GTR %numrealset% set dontpad=0&set /a padset=number-numrealset&set dontrepeat=-1&goto repeat
 REM echo %number%-%numrealset%
 if %number% GTR 26 set dopadding=1&set /a padset=number-26&set dontrepeat=-1
 REM echo %padset% pd
 REM echo %padset% pd
 :setlesspad
-set /a lesspad=%number% %% %numrealset%
+REM set /a lesspad=%number% %% %numrealset%
 REM if %lesspad%==0 set /a number=number-2
 :repeat
 set rand_lenth=
@@ -119,22 +119,20 @@ if %dopadding%==1 if %padset% LSS 0 set /a dontrepeat+=1
 if %dontrepeat% LSS 1 goto repeat
 Rem if %numrealset% GTR 26 set rand_lenth=!rand_lenth:~52! & goto next
 set result="%result:"=%"
-set /a number=number+1
-if %lesspad%==0 (set result="!result:~0,%number%!") else (set result="!result:~0,%number%!")
+set result="!result:~1,%number%!"
 for /f "tokens=*" %%i in (!result!) do echo %%~i & REM powershell -c "\"%%~i\".length"
 goto :eof
-for /f "tokens=*" %%i in ("!set6!") do (
-set some=%%i
-set some="!some:~%rand_lenth%,1!"
-set endprocess=!some!!endprocess!
-rem debug info: echo using set%whatset% @ !rand_lenth! pass %loopcounter% endprocess is !endprocess!
-)
-if %loopcounter% LSS %number% goto randomgen
-setlocal disabledelayedexpansion
-set endprocess="%endprocess:"=%"
 
-for /f "tokens=*" %%i in (%endprocess%) do echo %%i
-goto :eof
+
+
+
+
+
+
+
+
+
+
 :setrand
 set randum=%random%
 exit /b

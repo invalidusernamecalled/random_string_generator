@@ -4,15 +4,15 @@
 set result=
 set set1="abcdefghijklmnoprstuvwxyz"
 set set2="0123456789"
-set set3=">/<~^^^!@#$%%^^^&*(){}[]\|:;?.,"
-set set4="!@#$%&*(){}[]"
+set set3=">/<~@#$*(){}[]\|:;?.,"
+set set4="@#$%&*(){}[]"
 set set5="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 set set6="ABCDEFGabcdefg0123456789HIJKLMNOPhijklmnopQR0123456789STUVWXYZqrstuvwxyz"
 set set7=">/<~^^^!@#$%%^^^&*(){}[]\|:;?.,ABCDEFGabcdefg0123456789HIJKLMNOPhijklmnopQR0123456789STUVWXYZqrstuvwxyz"
 set numset1=25
-set numset2=9
-set numset3=24
-set numset4=12
+set numset2=10
+set numset3=21
+set numset4=11
 set numset5=25
 set numset6=71
 set numset7=95
@@ -87,9 +87,17 @@ goto :eof
 
 :emode
 set dopadding=0
+set dontpad=1
 set dontrepeat=1
-if %number% LEQ %numrealset% set padset=%numrealset%
-if %number% GTR %numrealset% set dopadding=1&set /a padset=number-numrealset&set dontrepeat=-1
+set padset=0
+if %numrealset% LSS 26 if %number% GTR %numrealset% set dontpad=0&set /a padset=number-numrealset&set dontrepeat=-1&goto setlesspad
+REM echo %number%-%numrealset%
+if %number% GTR 26 set dopadding=1&set /a padset=number-26&set dontrepeat=-1
+REM echo %padset% pd
+REM echo %padset% pd
+:setlesspad
+set /a lesspad=%number% %% %numrealset%
+REM if %lesspad%==0 set /a number=number-2
 :repeat
 set rand_lenth=
 set lenth=0
@@ -98,15 +106,22 @@ call :setrand
 set /a rand_gen=1+%%i*!randum!/32767
 set rand_lenth=!rand_lenth! !rand_gen!
 set /a lenth+=1
-if %lenth% GTR  %number% goto next
+if !lenth! GTR  %number% goto next
+if !lenth! GTR  26 goto next
 )
 :next
 for /f "tokens=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 delims= " %%a in ("!rand_lenth!") do set result=!result!"!setchr[%%a]!!setchr[%%b]!!setchr[%%c]!!setchr[%%d]!!setchr[%%e]!!setchr[%%f]!!setchr[%%g]!!setchr[%%h]!!setchr[%%i]!!setchr[%%j]!!setchr[%%k]!!setchr[%%l]!!setchr[%%m]!!setchr[%%n]!!setchr[%%o]!!setchr[%%p]!!setchr[%%q]!!setchr[%%r]!!setchr[%%s]!!setchr[%%t]!!setchr[%%u]!!setchr[%%v]!!setchr[%%w]!!setchr[%%x]!!setchr[%%y]!!setchr[%%z]!"
-if %dopadding%==1 set /a padset=padset-numrealset
+if %dontpad%==0 set /a padset=padset-numrealset
+if %dontpad%==0 if %padset% LSS 0 set /a dontrepeat+=1&goto checkrepeat
+if %dopadding%==1 set /a padset=padset-26
 if %dopadding%==1 if %padset% LSS 0 set /a dontrepeat+=1
+:checkrepeat
 if %dontrepeat% LSS 1 goto repeat
+Rem if %numrealset% GTR 26 set rand_lenth=!rand_lenth:~52! & goto next
 set result="%result:"=%"
-for /f "tokens=*" %%i in ("!result:~1,%number%!") do echo %%~i
+set /a number=number+1
+if %lesspad%==0 (set result="!result:~0,%number%!") else (set result="!result:~0,%number%!")
+for /f "tokens=*" %%i in (!result!) do echo %%~i & REM powershell -c "\"%%~i\".length"
 goto :eof
 for /f "tokens=*" %%i in ("!set6!") do (
 set some=%%i
@@ -129,7 +144,6 @@ echo %time%
 echo %sum_two%
 set /a res=sum_two-sum_first
 if %res% GTR 0 echo this took %res% ms Approx
-
 :printhelpmenu
 echo: Syntax -
 echo: "%~nx0" /[n:number of chars to generate] /[:generate options]

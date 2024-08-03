@@ -8,20 +8,19 @@ set set3=">/<~@#$*(){}[]\|:;?.,"
 set set4="@#$%&*(){}[]"
 set set5="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 set set6="ABCDEFGabcdefg0123456789HIJKLMNOPhijklmnopQR0123456789STUVWXYZqrstuvwxyz"
-set set7=">/<~^^^!@#$%%^^^&*(){}[]\|:;?.,ABCDEFGabcdefg0123456789HIJKLMNOPhijklmnopQR0123456789STUVWXYZqrstuvwxyz"
+set set7=">/<~@#$*(){}[]\|:;?.,ABCDEFGabcdefg0123456789HIJKLMNOPhijklmnopQR0123456789STUVWXYZqrstuvwxyz"
+set set8="ABCDEFGabcdefg0123456789HIJKLMNOPhijklmnopQR0123456789STUVWXYZqrstuvwxyzMNOPhijklmnopQR012345"
 set numset1=25
 set numset2=20
 set numset3=21
 set numset4=11
 set numset5=25
 set numset6=71
-set numset7=95
+set numset7=93
+set numset8=93
 set loopcounter=0
 set endprocess=
-set e_mode=1
-REM for /f "tokens=3,4 delims=:." %%i in ("%time%") do set one=%%i*60&set two=%%j&echo %%i.%%j
-REM set /a sum_first=one+two
-REM echo %sum_first%
+
 Setlocal enabledelayedexpansion
 set useset=
 if /i "%1"=="/h" goto :printauthor
@@ -36,21 +35,21 @@ if "%2"=="" set useset=1&goto init
 if "%2" NEQ "" goto continuestyle
 goto :printhelpmenu
 :continuestyle
-echo %2|findstr /ber "[/][CcsSnNxX][CcsSnNxX]*[CcsSnNxX]*[CcsSnNxX]*[CcsSnNxX]*[CcsSnNxX]*" >NUL&&type nul || goto :printhelpmenu
+echo %2|findstr /ber "[/][CcEesSnNxX][CcsSnNxX]*[CcsSnNxX]*[CcsSnNxX]*[CcsSnNxX]*[CcsSnNxX]*" >NUL&&type nul || goto :printhelpmenu
 set style=%~2
 set style=%style:~1%
 set skip=0
-for /l %%i in (0,1,5) do call :setlocaltest %%i %style%&if !skip!==1 goto init
+for /l %%i in (0,1,5) do call :setlocaltest %%i %style%&if !skip!==1 goto initialize
 :init
 set counterset=0
-REM for %%a in (%useset%) do set /a counterset+=1&set intr[!counterset!]=%%a
 set realset=
 for %%a in (%useset%) do CALL set realset=%%realset%%%%set%%a%%
 set numrealset=0
 for %%a in (%useset%) do CALL set /a numrealset=!numrealset!+!numset%%a!
 set realset="%realset:"=%"
+:initialize
 for /l %%a in (1,1,%numrealset%) do set setchr[%%a]=!realset:~%%a,1!
-goto :randomgen
+goto randomgen
 :setlocaltest
 set stort=%2
 set n=%1
@@ -61,43 +60,18 @@ if "%termchr%"=="c" set useset=%useset% 1
 if /i "%termchr%"=="s" set useset=%useset% 4
 if /i "%termchr%"=="x" set useset=%useset% 3
 if /i "%termchr%"=="n" set useset=%useset% 2
+if "%termchr%"=="e" set realset=!set7!&set numrealset=!numset7!&set skip=1
+if "%termchr%"=="E" set realset=!set8!&set numrealset=!numset8!&set skip=1
 exit /b
 
-
 :randomgen
-if %e_mode%==1 goto :emode
-REM echo on
-set /a loopcounter+=1
-set /a rand_no=(%counterset%*%RANDOM%/32767)+1
-set whatset=!intr[%rand_no%]!
-set /a rand_lenth=(!numset%whatset%!*%RANDOM%/32767)+1
-for /f "tokens=*" %%i in ('echo !set%whatset%!') do (
-set some=%%i
-set some="!some:~%rand_lenth%,1!"
-set endprocess=!some!!endprocess!
-rem debug info: echo using set%whatset% @ !rand_lenth! pass %loopcounter% endprocess is !endprocess!
-)
-if %loopcounter% LSS %number% goto randomgen
-setlocal disabledelayedexpansion
-set endprocess="%endprocess:"=%"
-
-for /f "tokens=*" %%i in (%endprocess%) do echo %%i
-
-goto :eof
-
-:emode
 set dopadding=0
 set dontpad=1
 set dontrepeat=1
 set padset=0
 if %numrealset% LSS 26 if %number% GTR %numrealset% set dontpad=0&set /a padset=number-numrealset&set dontrepeat=-1&goto repeat
-REM echo %number%-%numrealset%
 if %number% GTR 26 set dopadding=1&set /a padset=number-26&set dontrepeat=-1
-REM echo %padset% pd
-REM echo %padset% pd
-:setlesspad
-REM set /a lesspad=%number% %% %numrealset%
-REM if %lesspad%==0 set /a number=number-2
+
 :repeat
 set rand_lenth=
 set lenth=0
@@ -117,35 +91,27 @@ if %dopadding%==1 set /a padset=padset-26
 if %dopadding%==1 if %padset% LSS 0 set /a dontrepeat+=1
 :checkrepeat
 if %dontrepeat% LSS 1 goto repeat
-Rem if %numrealset% GTR 26 set rand_lenth=!rand_lenth:~52! & goto next
 set result="%result:"=%"
 set result="!result:~1,%number%!"
 for /f "tokens=*" %%i in (!result!) do echo %%~i & REM powershell -c "\"%%~i\".length"
 goto :eof
 
-
-
-
-
-
-
-
-
-
-
 :setrand
 set randum=%random%
 exit /b
-for /f "tokens=3,4 delims=:." %%i in ("%time%") do echo %%i.%%j&if %%i GEQ %one% echo proc&set first=%%i*60&set second=%%j
-set /a sum_two=first+second
-echo %time%
-echo %sum_two%
-set /a res=sum_two-sum_first
+
+
+
+
+
 if %res% GTR 0 echo this took %res% ms Approx
+
 :printhelpmenu
 echo: Syntax -
 echo: "%~nx0" /[n:number of chars to generate] /[:generate options]
 echo:
+echo:/e efficiency mode 1 (cannot be use with any other option)
+echo:/E efficiency mode 2 (cannot be use with any other option)
 echo:/c lower case alpha.
 echo:/C upper case alpha.
 echo:/n numbers

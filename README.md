@@ -1,5 +1,6 @@
 ```
 random.bat /4
-yeah.bat         2110:outputs per minute
-pseudorandom.bat 1100:outputs per minute
+
+
+cLocking 690 strings per minute the pseudorandom.bat can serve your high need (low cost) website / batch script it requires bonniewala.bat to run as a service and keygenerator.bat needs to be present.
 ```

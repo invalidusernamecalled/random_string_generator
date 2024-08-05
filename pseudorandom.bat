@@ -1,5 +1,6 @@
 @echo off
-set realset="aBcDXyZzY019754JjKlLmABCDEFGabcdefg0123456789HIJKLMNOPhijklmnopQR0123456789STUVWXYZqrstuvwxyzaBcDXyZzY019754JjKlLmABCDEFGabcdefg0123456789HIJKLMNOPhijklmnopQR0123456789STUVWXYZqrstuvwxyz"
+if exist keygenerator.bat (call keygenerator.bat) else (set realset="xjJkHz9z5Fp417abFlZSZ64y7B35d0mG0Bet84Dd1Xlsz61HU22MTSR7QPLlWKp324Xrf7co891JmA5XOy4K2fjlnj9q81P7ZEi0s10uINIagcGL0EXMnYNvmw66ywyYhBg5LBk75VJKRjCi90rhaUY593aTZtq938oeOYDxmADvzLbVucCJcD4WQK")
+for /l %%a in (1,1,%numrealset%) do set setchr[%%a]=!realset:~%%a,1!
 set number=16
 set numrealset=186
 set counter=0
@@ -21,9 +22,8 @@ set history=!rand_gen!
 if !history_counter! gtr 4 GOTO REPEAT
 for /f "tokens=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 delims= " %%a in ("!rand_lenth!") do echo !setchr[%%a]!!setchr[%%b]!!setchr[%%c]!!setchr[%%d]!!setchr[%%e]!!setchr[%%f]!!setchr[%%g]!!setchr[%%h]!!setchr[%%i]!!setchr[%%j]!!setchr[%%k]!!setchr[%%l]!!setchr[%%m]!!setchr[%%n]!!setchr[%%o]!!setchr[%%p]!!setchr[%%q]!!setchr[%%r]!!setchr[%%s]!!setchr[%%t]!!setchr[%%u]!!setchr[%%v]!!setchr[%%w]!!setchr[%%x]!!setchr[%%y]!!setchr[%%z]!
 set /a counter+=1 
-if %counter%==30 (call keygenerator.bat)
-if %counter%==30  for /l %%a in (1,1,%numrealset%) do set setchr[%%a]=!realset:~%%a,1!
-if %counter%==30  set counter=0
+
+
 
 
 :setrand

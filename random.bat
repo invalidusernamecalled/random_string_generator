@@ -108,7 +108,7 @@ if %res% GTR 0 echo this took %res% ms Approx
 
 :printhelpmenu
 echo: Syntax -
-echo: "%~nx0" /[n:number of chars to generate] /[:generate options]
+echo: "%~nx0" /[number of chars to generate] /[generate options]
 echo:
 echo:/e efficiency mode 1 (cannot be use with any other option)
 echo:/E efficiency mode 2 (cannot be use with any other option)

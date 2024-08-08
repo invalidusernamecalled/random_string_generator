@@ -119,8 +119,8 @@ echo:/s symbol basic symbol set
 echo:/x symbol extended symbol set
 echo:/h author info
 echo:
-echo:All options must be combined like this /lu
-echo:      NOT /l /u
+echo:All options must be combined like this /Cn
+echo:      NOT /C /n
 echo:
 goto :eof
 :printauthor

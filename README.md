@@ -11,8 +11,8 @@
 /x symbol extended symbol set
 /h author info
 
-All options must be combined like this /lu
-      NOT /l /u
+All options must be combined like this /Cn
+      NOT /C /n
 
 
 ```

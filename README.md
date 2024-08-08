@@ -1,6 +1,6 @@
 ```
  Syntax -
- "random.bat" /[n:number of chars to generate] /[:generate options]
+ "random.bat" /[number of chars to generate] /[generate options]
 
 /e efficiency mode 1 (cannot be use with any other option)
 /E efficiency mode 2 (cannot be use with any other option)

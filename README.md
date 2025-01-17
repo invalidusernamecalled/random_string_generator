@@ -16,15 +16,12 @@ All options must be combined like this /Cn
 
 
 ```
+### Examples:-
+`for /f "delims=" %%i in ('random.bat /12 /e') do set random_string=%%i`
 ___
-<b>a little about pseudorandom.bat:-</b>
-clocking 690 strings per minute the pseudorandom.bat can serve
-your need for speed project. this batch script requires
+<b>/production/pseudorandom.bat:-</b>
+clocking 690 strings per minute `pseudorandom.bat` generates high speed output. it suits your need for speed project. this batch script requires
 `bonniewala.bat` to run as a service (ongoing in background)
 and `keygenerator.bat` needs be present in the working directory.
 this key changer can mess up the brute-force dreams of any
-schmucck arse in this world. *clap for yourself*
-`
-
-### Examples:-
-`for /f "delims=" %%i in ('random.bat /12 /e') do set random_string=%%i`
+schmucck arse in this world. *clap!!* *clap!!*

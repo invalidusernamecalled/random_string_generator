@@ -24,4 +24,4 @@ clocking 690 strings per minute `pseudorandom.bat` generates high speed output. 
 `bonniewala.bat` to run as a service (ongoing in background)
 and `keygenerator.bat` needs be present in the working directory.
 this key changer can mess up the brute-force dreams of any
-schmucck arse in this world. *clap!!* *clap!!*
+pretender in this world. *clap!!* *clap!!*

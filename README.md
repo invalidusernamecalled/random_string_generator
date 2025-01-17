@@ -31,3 +31,8 @@ pretender in this world. *clap!!* *clap!!*
 `bonniewala.bat` must be running in one shell.
 <br>in another shell, we run (for example)<br>
 `echo off & for /l %i in (1,1,200000) do pseudorandom.bat`
+
+### Why is there a need for pseudorandom.bat
+##### Why a need for *anything* (asked the Great Medieval Clown)
++ Some people are batch-lovers (just..) and they must need and have the appropriate concurrent/parallel/likewise tools that the otherwise places (languages/environments) have. 
++ You usually can't build everything yourself, so i try to chip in where i can.

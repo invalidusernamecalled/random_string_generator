@@ -18,10 +18,13 @@ All options must be combined like this /Cn
 ```
 ___
 <b>a little about pseudorandom.bat:-</b>
-cLocking 690 strings per minute the pseudorandom.bat can serve
-your high need (low cost) project. this batch script requires
-bonniewala.bat to run as a service (ongoing in background)
-and keygenerator.bat needs be present in the working directory.
+clocking 690 strings per minute the pseudorandom.bat can serve
+your need for speed project. this batch script requires
+`bonniewala.bat` to run as a service (ongoing in background)
+and `keygenerator.bat` needs be present in the working directory.
 this key changer can mess up the brute-force dreams of any
 schmucck arse in this world. *clap for yourself*
-```
+`
+
+### Examples:-
+`for /f "delims=" %%i in ('random.bat /12 /e') do set random_string=%%i`

@@ -25,3 +25,9 @@ clocking 690 strings per minute `pseudorandom.bat` generates high speed output. 
 and `keygenerator.bat` needs be present in the working directory.
 this key changer can mess up the brute-force shmuck arse dreams of any
 pretender in this world. *clap!!* *clap!!*
+
+### Example for /production/pseudorandom.bat:-
+
+`bonniewala.bat` must be running in one shell.
+<br>in another shell, we run (for example)<br>
+`echo off & for /l %i in (1,1,200000) do pseudorandom.bat`

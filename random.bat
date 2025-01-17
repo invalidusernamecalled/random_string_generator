@@ -1,4 +1,4 @@
-
+REM I'M A CHRISTIAN GOD DAMMIT
 @echo off
 :process
 set result=

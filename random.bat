@@ -20,11 +20,12 @@ set numset7=93
 set numset8=93
 set loopcounter=0
 set endprocess=
-
+if /i "%1"=="/h" goto :printauthor
+if "%1"=="/?" goto :printhelpmenu
+for /f "tokens=1,2 delims=/" %%i in ("%*") do echo %%i|findstr /r "^[0-9][0-9]*" >NUL&&echo: >NUL || (echo %%i:ERROR WITH SYNTAX & goto :EOF)
+for /f "tokens=1,2 delims=/" %%i in ("%*") do echo %%j|findstr /r "^[CcEesSnNxX][CcEesSnNxX]*$" >NUL&&set options=%%j || (echo %%j:ERROR WITH SYNTAX & goto :EOF)
 Setlocal enabledelayedexpansion
 set useset=
-if /i "%1"=="/h" goto :printauthor
-if "%1"=="" goto :printhelpmenu
 if "%1" NEQ "" goto continue
 goto :printhelpmenu
 :continue

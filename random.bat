@@ -1,4 +1,4 @@
-REM I'M A CHRISTIAN GOD DAMMIT
+
 @echo off
 :process
 set result=
@@ -22,16 +22,16 @@ set loopcounter=0
 set endprocess=
 if /i "%1"=="/h" goto :printauthor
 if "%1"=="/?" goto :printhelpmenu
-for /f "tokens=1,2 delims=/" %%i in ("%*") do echo %%i|findstr /r "^[0-9][0-9]*" >NUL&&echo: >NUL || (echo %%i:ERROR WITH SYNTAX & goto :EOF)
+echo %1|findstr /ber "^[0-9][0-9]*$" >NUL&&type nul || goto :printhelpmenu
+REM for /f "tokens=1,2 delims=/" %%i in ("%*") do echo %%i|findstr /r "^[0-9][0-9]*$" >NUL&&echo: >NUL || (echo %%i:ERROR WITH SYNTAX & goto :EOF)
 for /f "tokens=1,2 delims=/" %%i in ("%*") do echo %%j|findstr /r "^[CcEesSnNxX][CcEesSnNxX]*$" >NUL&&set options=%%j || (echo %%j:ERROR WITH SYNTAX & goto :EOF)
 Setlocal enabledelayedexpansion
 set useset=
 if "%1" NEQ "" goto continue
 goto :printhelpmenu
 :continue
-echo %1|findstr /ber "[/][0-9][0-9]*" >NUL&&type nul || goto :printhelpmenu
+echo %1|findstr /ber "[0-9][0-9]*" >NUL&&type nul || goto :printhelpmenu
 set number=%~1
-set number=%number:~1%
 if "%2"=="" set useset=1&goto init
 if "%2" NEQ "" goto continuestyle
 goto :printhelpmenu
@@ -109,8 +109,8 @@ if %res% GTR 0 echo this took %res% ms Approx
 
 :printhelpmenu
 echo: Syntax -
-echo: "%~nx0" /[number of chars to generate] /[generate options]
-echo:
+echo: "%~nx0" [number of chars to generate] /[generate options]
+echo:                    Example :- "%~nx0" 12 /e
 echo:/e efficiency mode 1 (cannot be use with any other option)
 echo:/E efficiency mode 2 (cannot be use with any other option)
 echo:/c lower case alpha.

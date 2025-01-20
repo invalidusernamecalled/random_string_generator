@@ -17,7 +17,7 @@ All options must be combined like this /Cn
 
 ```
 ### Examples:-
-`for /f "delims=" %%i in ('random.bat /12 /e') do set random_string=%%i`
+`for /f "delims=" %%i in ('random.bat 12 /e') do set random_string=%%i`
 ___
 <b>/production/pseudorandom.bat:-</b>
 clocking 690 strings per minute `pseudorandom.bat` generates high speed output. it suits your need for speed project. this batch script requires

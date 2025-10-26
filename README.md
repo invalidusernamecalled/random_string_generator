@@ -1,4 +1,8 @@
 ```
+✝
+```
+Sweet b'ful Jesus
+```
  Syntax -
  "random.bat" [number of chars to generate] /[generate options]
 

@@ -16,6 +16,7 @@ Sweet b'ful Jesus
 /h author info
 
 All options must be combined like this /Cn
+Multiple options like /cc Increases probability
       NOT /C /n
 
 

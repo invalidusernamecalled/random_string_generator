@@ -120,9 +120,8 @@ echo:/s symbol basic symbol set
 echo:/x symbol extended symbol set
 echo:/h author info
 echo:
-echo:All options must be combined like this /Cn
+echo:All options must be combined like this /Cn  ^(NOT /C /n^)
 echo:Repeating option like /cc Increases set probability
-echo:      NOT /C /n
 echo:
 goto :eof
 :printauthor
@@ -132,4 +131,5 @@ echo:Christian God, Christian Feelings
 echo:Location:      India
 
 echo:Immigrant:     No
+
 

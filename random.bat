@@ -121,7 +121,7 @@ echo:/x symbol extended symbol set
 echo:/h author info
 echo:
 echo:All options must be combined like this /Cn
-echo:Multiple options like /cc Increases probability
+echo:Repeating option like /cc Increases set probability
 echo:      NOT /C /n
 echo:
 goto :eof
@@ -132,3 +132,4 @@ echo:Christian God, Christian Feelings
 echo:Location:      India
 
 echo:Immigrant:     No
+

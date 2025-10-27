@@ -15,8 +15,8 @@ Sweet b'ful Jesus
 /x symbol extended symbol set
 /h author info
 
-All options must be combined like this /Cn
-Multiple options like /cc Increases probability
+All options must be combined like this /Cn  (NOT /C /n)
+Repeating option like /cc Increases set probability
       NOT /C /n
 
 
